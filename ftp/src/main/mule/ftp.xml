@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd">
+	<file:config name="File_Config" doc:name="File Config" doc:id="95ff0b1e-4ff7-4641-837b-972fec6faf99" />
+	<flow name="ftpFlow" doc:id="b1bfb75d-f0f7-461e-9496-7c39cbd8faf5" >
+		<file:listener doc:id="b777a74e-23ce-48a1-9f2f-0e4a20758143" config-ref="File_Config" directory="C:\Users\DELL\Desktop\file\input" autoDelete="true" timeBetweenSizeCheckUnit="MINUTES" moveToDirectory="C:\Users\DELL\Desktop\file\output">
+			<scheduling-strategy >
+				<fixed-frequency frequency="1" timeUnit="MINUTES" />
+			</scheduling-strategy>
+		</file:listener>
+		<logger level="INFO" doc:name="Logger" doc:id="57e8bc25-b9a7-4f90-9d14-6b45fd5992bf" message="#[payload]"/>
+	</flow>
+</mule>
